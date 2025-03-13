@@ -22,7 +22,6 @@ function AuthContent({ isLogin, onAuthenticate }) {
     } else {
       navigation.replace('Login');
     }
-
   }
 
   function submitHandler(credentials) {
