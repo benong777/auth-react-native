@@ -10,7 +10,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import { Colors } from './constants/styles';
 import AuthContextProvider, { AuthContext } from './store/auth-context';
 import IconButton from './components/ui/IconButton';
-import AppLoading from 'expo-app-loading';
+// import AppLoading from 'expo-app-loading';
 
 const Stack = createNativeStackNavigator();
 
