@@ -13,19 +13,6 @@ export const AuthContext = createContext({
 export default function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState();
 
-  useEffect(() => {
-    async function fetchToken() {
-      const storedToken = await AsyncStorage.getItem('token');
-
-      // If token was previously stored in local device, restore it in app memory again by setting the state
-      if (storedToken) {
-        setAuthToken(storedToken);
-      }
-    }
-
-    fetchToken();
-  }, []);
-
   function authenticate(token) {
     setAuthToken(token)
     AsyncStorage.setItem('token', token);
