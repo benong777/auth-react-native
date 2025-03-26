@@ -45,8 +45,8 @@ function AuthenticatedStack() {
         component={WelcomeScreen}
         options={{
           // tintColor automatically provided
-          headerRight: ({tintColor}) => <IconButton icon='exit' size={20} color={tintColor} onPress={authCtx.logout}/>
-          // headerRight: ({tintColor}) => <Button title='Logout' color={tintColor} onPress={authCtx.logout} />
+          headerRight: ({tintColor}) => <IconButton icon='exit' size={20} color={tintColor || 'white'} onPress={authCtx.logout}/>
+          // headerRight: ({tintColor}) => <Button title='Logout' color={tintColor || 'white'} onPress={authCtx.logout} />
         }}
       />
     </Stack.Navigator>
@@ -104,26 +104,6 @@ function Root() {
       <Navigation />
     </View>
   );
-
-  // useEffect(() => {
-  //   async function fetchToken() {
-  //     const storedToken = await AsyncStorage.getItem('token');
-
-  //     // If token was previously stored in local device, restore it in app memory again by setting the state
-  //     if (storedToken) {
-  //       authCtx.authenticate(storedToken);
-  //     }
-
-  //     setIsTryingLogin(false);  // no longer trying to log user in
-  //   }
-
-  //   fetchToken();
-  // }, []);
-
-  // if (isTryingLogin) {
-  //   return <AppLoading />
-  // }
-  // return <Navigation />
 }
 
 export default function App() {
