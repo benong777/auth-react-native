@@ -27,22 +27,24 @@ export async function loginUser(email, password) {
   return authenticate('signInWithPassword', email, password);
 }
 
-// export async function resetPassword(email) {
-//   const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=` + EXPO_PUBLIC_GOOGLE_WEB_API_KEY;
+export async function resetPassword(email) {
+  const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=` + EXPO_PUBLIC_GOOGLE_WEB_API_KEY;
   
-//   try {
-//     const response = await axios.post(url, {
-//       requestType: "PASSWORD_RESET",
-//       email: email
-//     });
+  try {
+    const response = await axios.post(url, {
+      requestType: "PASSWORD_RESET",
+      email: email
+    });
 
-//     console.log('Password reset email sent:', response.data);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error sending password reset email:', error.response?.data || error.message);
-//   }
-// }
+    console.log('Password reset email sent:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error sending password reset email:', error.response?.data || error.message);
+  }
+}
 
+/* Reset password using fetch */
+/*
 export async function resetPassword(email) {
   const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${EXPO_PUBLIC_GOOGLE_WEB_API_KEY}`;
 
@@ -63,3 +65,4 @@ export async function resetPassword(email) {
     console.error("Error sending reset email:", error);
   }
 }
+*/
