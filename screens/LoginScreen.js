@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, Pressable, View, Text } from 'react-native';
 import LoadingOverlay from '../components/ui/LoadingOverlay';
-import { loginUser } from '../utils/auth';
+import { loginUser, resetPassword } from '../utils/auth';
 import AuthContent from '../components/Auth/AuthContent';
 import { AuthContext } from '../store/auth-context';
 
 
-function LoginScreen() {
+function LoginScreen({ navigation }) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const authCtx = useContext(AuthContext);
   
@@ -25,10 +25,21 @@ function LoginScreen() {
     }
   }
 
+  function forgotPasswordHandler() {
+    navigation.navigate('ForgotPassword');
+  }
+
   if (isAuthenticating) {
     return <LoadingOverlay message='Logging in...' />
   } 
-  return <AuthContent isLogin onAuthenticate={loginHandler}/>;
+  return (
+    <View>
+      <AuthContent isLogin onAuthenticate={loginHandler}/>
+      <Pressable onPress={forgotPasswordHandler}>
+        <Text style={{ textAlign: 'center', color: 'blue', marginTop: 10 }}>Forgot Password?</Text>
+      </Pressable>
+    </View>
+  );
 }
 
 export default LoginScreen;
